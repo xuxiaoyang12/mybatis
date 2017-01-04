@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间 最好写成完全限定名格式-->
+<mapper namespace="com.mxiaixy.Mapper.UserMapper">
+    <!--写需要的sql语句-->
+    <!--查询sql语句  id最好写成方法名  parameterType 传入参数类型 resultType输出结果类型
+    一般写出那个当前类的 完全限定名   如果只写类名需要在mybatis.xml中配置别名-->
+    <select id="findById" parameterType="int" resultType="User">
+       SELECT * FROM t_user WHERE id = #{id}
+    </select>
+    <!--更新数据-->
+    <update id="update" parameterType="User">
+        update t_user set username=#{username},password=#{password} where id=#{id}
+    </update>
+    <!--保存数据-->
+    <insert id="save" parameterType="User">
+        INSERT  into t_user (username,password) values(#{username},#{password})
+    </insert>
+    <!--删除数据-->
+    <delete id="delById" parameterType="int">
+        DELETE FROM  t_user where id=#{id}
+    </delete>
+
+
+</mapper>
