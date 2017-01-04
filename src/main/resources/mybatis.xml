@@ -7,6 +7,8 @@
     <!--在mapper配置文件中就可以使用别名了-->
     <typeAliases>
         <typeAlias type="com.mxiaixy.pojo.User" alias="User"/>
+        <typeAlias type="com.mxiaixy.pojo.Employee" alias="Employee"/>
+        <typeAlias type="com.mxiaixy.pojo.Dept" alias="Dept"/>
     </typeAliases>
 
     <environments default="dev">
@@ -26,5 +28,7 @@
     <!--加载mapper.xml文件-->
     <mappers>
        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/EmployeeMapper.xml"/>
+        <!--<mapper resource="mapper/DeptMapper.xml"/>-->
     </mappers>
 </configuration>

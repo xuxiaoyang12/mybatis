@@ -27,6 +27,22 @@ public class MyBatisUserMapperTestCase {
 
         sqlSession.close();
     }
+    @Test
+    public void  save(){
+        SqlSession sqlSession = SqlSessionFactoryUtils.getSqlSession(true);
+
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        User user= new User();
+        user.setUsername("tom是");
+        user.setPassword("123123123");
+
+        userMapper.save(user);
+        System.out.println(user.getId());//获取自动增长的主键
+
+        sqlSession.close();
+
+
+    }
 
 
 

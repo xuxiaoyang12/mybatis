@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间 最好写成完全限定名格式-->
+<mapper namespace="com.mxiaixy.mapper.EmployeeMapper">
+    <!--sql语句-->
+    <!--多对一查询    两表联查-->
+    <!--1.通过映射查询-->
+   <!-- <select id="findById"  resultMap="employeeMapper" >
+        SELECT t_employee.id,empname,deptid,t_dept.id,deptname
+        FROM t_employee
+        INNER JOIN t_dept ON t_employee.deptid=t_dept.id
+        WHERE t_employee.id = #{id}
+    </select>-->
+    <!--2.通过别名查询-->
+    <select id="findById"  resultType="Employee" >
+         SELECT t_employee.id,empname,deptid,t_dept.id AS 'dept.id',deptname AS 'dept.deptname'
+         FROM t_employee
+         INNER JOIN t_dept ON t_employee.deptid=t_dept.id
+         WHERE t_employee.id =1
+    </select>
+    <!--1.配置结果集映射  -->
+    <!--<resultMap id="employeeMapper" type="Employee">
+        <id column="id" property="id"/>
+        <result column="empname" property="empname"/>
+        <result column="deptid" property="deptid"/>
+        <association property="dept" javaType="Dept" column="deptid">
+            <id property="id" column="deptid"></id>
+            <result property="deptname" column="deptname"></result>
+        </association>
+    </resultMap>-->
+
+
+</mapper>
