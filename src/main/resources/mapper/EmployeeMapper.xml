@@ -20,6 +20,9 @@
          INNER JOIN t_dept ON t_employee.deptid=t_dept.id
          WHERE t_employee.id =1
     </select>
+    <select id="findByDeptid" resultType="Employee">
+        SELECT * FROM  t_employee WHERE  deptid=#{deptid}
+    </select>
     <!--1.配置结果集映射  -->
     <!--<resultMap id="employeeMapper" type="Employee">
         <id column="id" property="id"/>

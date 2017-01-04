@@ -2,8 +2,24 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mixaixy.mapper.DeptMapper">
-
+<mapper namespace="com.mxiaixy.mapper.DeptMapper">
+    <!--一对多-->
+    <select id="findById" resultMap="deptMap">
+        SELECT t_employee.id,empname,deptid,t_dept.id ,deptname
+        FROM t_employee
+        INNER JOIN t_dept ON t_employee.deptid=t_dept.id
+        WHERE t_dept.id=#{id}
+    </select>
+    <!--配置结果集映射-->
+    <resultMap id="deptMap" type="Dept">
+        <id column="id" property="id"></id>
+        <result property="deptname" column="deptname"></result>
+        <collection property="employeeList" ofType="Employee">
+            <id property="id" column="id"></id>
+            <result property="empname" column="empname"/>
+            <result property="deptid" column="deptid"/>
+        </collection>
+    </resultMap>
 
 
 </mapper>
