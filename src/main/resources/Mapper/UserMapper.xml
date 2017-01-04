@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace命名空间 最好写成完全限定名格式-->
-<mapper namespace="com.mxiaixy.Mapper.UserMapper">
+<mapper namespace="com.mxiaixy.mapper.UserMapper">
     <!--写需要的sql语句-->
     <!--查询sql语句  id最好写成方法名  parameterType 传入参数类型 resultType输出结果类型
     一般写出那个当前类的 完全限定名   如果只写类名需要在mybatis.xml中配置别名-->
@@ -22,6 +22,10 @@
     <delete id="delById" parameterType="int">
         DELETE FROM  t_user where id=#{id}
     </delete>
-
+    <!--查询所有-->
+    <select id="findAll" resultType="User">
+        select * from t_user
+    </select>
+    <!--使用代理模式-->
 
 </mapper>

@@ -25,6 +25,6 @@
     </environments>
     <!--加载mapper.xml文件-->
     <mappers>
-       <mapper resource="Mapper/UserMapper.xml"/>
+       <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 </configuration>
