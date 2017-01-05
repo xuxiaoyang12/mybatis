@@ -54,6 +54,7 @@ public class EmployeeTestCase {
 
     @Test
     public  void  findAll(){
+
         EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
 
        List<Employee> employeeList = employeeMapper.findAll();

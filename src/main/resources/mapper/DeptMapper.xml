@@ -13,7 +13,17 @@
     <select id="findByDeptid" resultType="Dept">
         SELECT * FROM  t_dept where id=#{deptid}
     </select>
-    <!--配置结果集映射-->
+    <select id="findAll" resultMap="allMap">
+        select * from t_dept
+    </select>
+    <!--findAll配置结果集映射-->
+    <resultMap id="allMap" type="Dept">
+        <id column="id" property="id"/>
+        <result column="deptname" property="deptname"/>
+        <collection property="employeeList" column="id"
+                    select="com.mxiaixy.mapper.EmployeeMapper.findByDeptid"/>
+    </resultMap>
+    <!--findById配置结果集映射-->
     <resultMap id="deptMap" type="Dept">
         <id column="id" property="id"></id>
         <result property="deptname" column="deptname"></result>
