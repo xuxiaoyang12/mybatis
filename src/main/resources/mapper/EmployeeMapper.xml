@@ -23,6 +23,21 @@
     <select id="findByDeptid" resultType="Employee">
         SELECT * FROM  t_employee WHERE  deptid=#{deptid}
     </select>
+    <!--两表联查  查询说有数据-->
+    <select id="findAll" resultMap="allMap">
+        select * from t_employee
+    </select>
+    <!--第二种生成两边联查中的所有结果-->
+    <!--配置findAll结果集映射-->
+    <resultMap id="allMap" type="Employee">
+        <id column="id" property="id"/>
+        <result column="empname" property="empname"/>
+        <result column="deptid" property="deptid"/>
+        <!--coumn 值是赋值给select中得findByDeptid值-->
+        <association property="dept" column="deptid"
+                     select="com.mxiaixy.mapper.DeptMapper.findByDeptid"/>
+
+    </resultMap>
     <!--1.配置结果集映射  -->
     <!--<resultMap id="employeeMapper" type="Employee">
         <id column="id" property="id"/>

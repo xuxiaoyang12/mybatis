@@ -12,6 +12,7 @@ public interface EmployeeMapper {
 
     Employee findById(Integer id);
     List<Employee> findByDeptid(Integer id);
+    List<Employee> findAll();
 
 
 }

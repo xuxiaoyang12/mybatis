@@ -5,6 +5,8 @@ import com.mxiaixy.pojo.Dept;
 import com.mxiaixy.pojo.Employee;
 import com.mxiaixy.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -13,6 +15,17 @@ import java.util.List;
  * Created by Mxia on 2017/1/4.
  */
 public class EmployeeTestCase {
+    private SqlSession sqlSession;
+    @Before
+    public void setup(){
+        //测试代码运行前执行
+        sqlSession = SqlSessionFactoryUtils.getSqlSession();
+    }
+    @After
+    public void  close(){
+        //测试代码运行后执行
+        sqlSession.close();
+    }
     @Test
     public void  findById(){
         SqlSession sqlSession = SqlSessionFactoryUtils.getSqlSession();
@@ -37,5 +50,15 @@ public class EmployeeTestCase {
         sqlSession.close();
 
 
+    }
+
+    @Test
+    public  void  findAll(){
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+
+       List<Employee> employeeList = employeeMapper.findAll();
+       for(Employee employee:employeeList){
+           System.out.println(employee);
+       }
     }
 }
