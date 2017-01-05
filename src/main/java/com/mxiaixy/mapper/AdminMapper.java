@@ -3,6 +3,7 @@ package com.mxiaixy.mapper;
 import com.mxiaixy.pojo.Admin;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,4 +18,8 @@ public interface AdminMapper {
     //Admin findByNameAndPassword(Map<String,Object> map);
     //第四种
     Admin findByNameAndPassword(Admin admin);
+    Admin select(Map<String,Object> map);
+    Admin chooseSelect(Map<String,Object> map);
+    List<Admin> selectOnlyOne(List<Integer> idList);
+    Admin findByQueryParam(Map<String,Object> map);
 }

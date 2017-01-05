@@ -27,5 +27,73 @@
     <select id="findByNameAndPassword" parameterType="admin" resultType="Admin">
         SELECT  * FROM  t_admin WHERE name = #{name} and password=#{password}
     </select>
+    <!--动态sql 使用-->
+    <!--1.if 语句的用法
+        其中的where节点 当里面的条件都不成立 where 不产生
+        当其中的一个条件成立产生where
+        如果第二个条件不成立 则会自动去掉and
+    -->
+    <select id="select" parameterType="map" resultType="Admin">
+        select * from t_admin 
+        <where>
+            <if test="name!=null and name != ''">
+                name=#{name}
+            </if>
+            <if test="password!=null and password!=''">
+                and password = #{password}
+            </if>
+            
+        </where>
+    </select>
+    <!--2.choose when otherwise 语句用法
+        选择语句用法
+    -->
+    <select id="chooseSelect" resultType="Admin">
+        select * from t_admin
+        <where>
+            <choose>
+                <when test="name != null and name !=''">
+                    name=#{name}
+                </when>
+                <when test="password!=null and password!=''">
+                    and password=#{password}
+                </when>
+                <otherwise>
+                    id=#{id}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+    <!--3.foreach 语句的使用
+        多条数据查询 或者 同时添加很多条数据
+        list集合中必须要有一个参数 要不然sql语句就会报错
+        （SELECT  * FROM  t_admin where id IN）
 
+        collection是传入list集合 值必须是list
+        item 是循环集合中每个值得引用名称
+        separator 是分割时符号
+        open/close 开始运行时/结束运行时添加里面的数据
+    -->
+    <select id="selectOnlyOne" parameterType="list" resultType="Admin">
+        SELECT  * FROM  t_admin where id IN 
+        <foreach collection="list" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+    <!--4.trim的用法
+        prefix 设置前缀  where/...
+        profixoverrides 设置如当程序失败时自动删除（过滤）
+        
+    -->
+    <select id="findByQueryParam" resultType="Admin">
+        SELECT  * from t_admin
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="name!=null and name != ''">
+                name=#{name}
+            </if>
+            <if test="password!=null and password!=''">
+                and password = #{password}
+            </if>
+        </trim>
+    </select>
 </mapper>
