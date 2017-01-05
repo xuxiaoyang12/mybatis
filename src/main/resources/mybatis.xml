@@ -9,6 +9,7 @@
         <typeAlias type="com.mxiaixy.pojo.User" alias="User"/>
         <typeAlias type="com.mxiaixy.pojo.Employee" alias="Employee"/>
         <typeAlias type="com.mxiaixy.pojo.Dept" alias="Dept"/>
+        <typeAlias type="com.mxiaixy.pojo.Admin" alias="Admin"/>
     </typeAliases>
 
     <environments default="dev">
@@ -30,5 +31,6 @@
        <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/EmployeeMapper.xml"/>
         <mapper resource="mapper/DeptMapper.xml"/>
+        <mapper resource="mapper/AdminMapper.xml"/>
     </mappers>
 </configuration>

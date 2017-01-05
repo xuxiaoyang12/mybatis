@@ -41,7 +41,7 @@ public class DeptMapperTestCase {
     }
     @Test
     public void  findAll(){
-        
+
         DeptMapper deptMapper = sqlSession.getMapper(DeptMapper.class);
         List<Dept> deptList = deptMapper.findAll();
         for(Dept dept:deptList){

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mxiaixy.mapper.AdminMapper">
+
+    <!--第一种多参数查询方法
+        当有多个参数是 第一个参数用param1,第二个参数用怕ram,.....
+    -->
+    <!--<select id="findByNameAndPassword" resultType="Admin">
+        select * from t_admin WHERE name=#{param1} and password=#{param2}
+    </select>-->
+    <!--第二种多参数查询传值方法
+        在AdminMapper中设置@Param参数名称 sql语句中的#{}可以直接使用
+    -->
+    <!--<select id="findByNameAndPassword" resultType="Admin">
+        select * from t_admin where name=#{name} and password=#{password}
+    </select>-->
+    <!--第三种查询
+        通过map集合进行传值
+    -->
+
+   <!-- <select id="findByNameAndPassword" parameterType="map" resultType="Admin">
+            SELECT  * FROM  t_admin WHERE name = #{name} and password=#{password}
+    </select>-->
+    <!--第四种 通过对象传值-->
+    <select id="findByNameAndPassword" parameterType="admin" resultType="Admin">
+        SELECT  * FROM  t_admin WHERE name = #{name} and password=#{password}
+    </select>
+
+</mapper>
