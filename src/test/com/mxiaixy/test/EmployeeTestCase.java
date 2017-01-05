@@ -62,4 +62,15 @@ public class EmployeeTestCase {
            System.out.println(employee);
        }
     }
+    /**
+     * 测试注解配置 多对一
+     */
+    @Test
+    public  void findAlldemo(){
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        List<Employee> employeeList = employeeMapper.findAlldemo();
+        for (Employee employee : employeeList){
+            System.out.println(employee);
+        }
+    }
 }

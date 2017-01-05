@@ -3,6 +3,18 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mxiaixy.mapper.AdminMapper">
+    <!--开启myBatis 框架的二级缓存
+        使用二级缓存时pojo类必须是可序列化类
+    -->
+    <!--
+        size设置存储对象 默认是1024
+        readOnly 设置是否为制度缓存 默认为false
+        eviction 设置缓存淘汰策略  默认为
+        flushInterval 设置刷新间隔时间 默认不刷新
+
+        如果刷新缓存所有缓存都将被清空  然后每查询一次新的数据时并加入缓存
+    -->
+    <cache size="1024" readOnly="false" eviction="FIFO" flushInterval="60000"/>
 
     <!--第一种多参数查询方法
         当有多个参数是 第一个参数用param1,第二个参数用怕ram,.....

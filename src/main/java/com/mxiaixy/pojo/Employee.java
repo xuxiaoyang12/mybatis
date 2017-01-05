@@ -1,10 +1,12 @@
 package com.mxiaixy.pojo;
 
+import java.io.Serializable;
+
 /**
  * 雇员
  * Created by Mxia on 2017/1/4.
  */
-public class Employee {
+public class Employee implements Serializable {
         private Integer id;
         private String empname;
         private Integer deptid;

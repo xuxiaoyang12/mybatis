@@ -1,12 +1,13 @@
 package com.mxiaixy.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 部门
  * Created by Mxia on 2017/1/4.
  */
-public class Dept {
+public class Dept implements Serializable {
     private Integer id;
     private String deptname;
     private List<Employee> employeeList;

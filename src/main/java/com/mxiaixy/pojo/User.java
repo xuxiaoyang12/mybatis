@@ -1,9 +1,11 @@
 package com.mxiaixy.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by Mxia on 2017/1/4.
  */
-public class User {
+public class User implements Serializable {
     private Integer id;
     private String username;
     private String password;

@@ -1,14 +1,17 @@
 package com.mxiaixy.pojo;
 
 import java.io.Serializable;
+import java.net.Inet4Address;
 
 /**
+ * 测试MyBatis注解配置类
  * Created by Mxia on 2017/1/5.
  */
-public class Admin implements Serializable {
+public class Student implements Serializable {
+
     private Integer id;
-    private String name;
-    private String password;
+    private String name ;
+    private String address;
 
     public Integer getId() {
         return id;
@@ -26,20 +29,20 @@ public class Admin implements Serializable {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "Admin{" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

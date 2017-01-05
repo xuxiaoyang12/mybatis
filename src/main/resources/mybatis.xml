@@ -32,5 +32,8 @@
         <mapper resource="mapper/EmployeeMapper.xml"/>
         <mapper resource="mapper/DeptMapper.xml"/>
         <mapper resource="mapper/AdminMapper.xml"/>
+
+        <!--注解配置-->
+        <mapper class="com.mxiaixy.mapper.StudentMapper"/>
     </mappers>
 </configuration>

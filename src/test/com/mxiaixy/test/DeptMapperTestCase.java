@@ -54,4 +54,21 @@ public class DeptMapperTestCase {
 
         }
     }
+    /**
+     * 测试一对多注解配置
+     */
+    @Test
+    public void findAllDemo(){
+        DeptMapper deptMapper = sqlSession.getMapper(DeptMapper.class);
+        List<Dept> deptList = deptMapper.findAllDemo();
+        for(Dept dept:deptList){
+            System.out.println(dept);
+            List<Employee> employeeList = dept.getEmployeeList();
+            for(Employee employee :employeeList){
+                System.out.println(employee);
+            }
+            System.out.println("-------------");
+
+        }
+    }
 }
